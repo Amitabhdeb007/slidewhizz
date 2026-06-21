@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SlideWhizz — Your Design Presentation Partner</title>
+<meta name="description" content="Premium presentation design. Slides that close deals. 48-hour delivery.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#09080A;--ink2:#100F12;--ink3:#1A1820;
+  --rose:#DA525E;--rose2:#C4404C;--rose3:#F07888;
+  --cream:#FFF9F5;--cream2:#FFF3EC;--bone:#EEE2D8;--bonedk:#DACCBF;
+  --text:#fff;--dim:#B8A8A0;--dimmer:#786860;
+  --ltext:#09080A;--lmuted:#5A5050;
+  --shadow-rose:0 24px 64px rgba(218,82,94,0.22);
+  --shadow-dark:0 32px 80px rgba(0,0,0,0.6);
+}
+html{scroll-behavior:smooth;}
+/* NO custom cursor — Wix compatible */
+body{background:var(--ink);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(9,8,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.05);}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#fff;cursor:pointer;letter-spacing:-0.5px;}
+.logo em{color:var(--rose);font-style:normal;}
+.nav-links{display:flex;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.36);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:60px;display:flex;align-items:center;transition:color .2s;border-bottom:2px solid transparent;}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--rose);}
+.nav-cta{background:var(--rose);color:#fff;font-weight:600;font-size:12px;padding:9px 20px;border-radius:3px;border:none;cursor:pointer;transition:all .2s;letter-spacing:0.2px;}
+.nav-cta:hover{background:var(--rose2);}
+
+/* HERO */
+.hero{min-height:calc(100vh - 60px);margin-top:60px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:64px 52px 80px;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hbg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:56px 56px;}
+.hbg-glow1{position:absolute;top:-20%;left:-10%;width:70%;height:80%;background:radial-gradient(ellipse at center,rgba(218,82,94,0.08) 0%,transparent 65%);}
+.hbg-glow2{position:absolute;bottom:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse at center,rgba(218,82,94,0.05) 0%,transparent 65%);}
+.hbg-noise{position:absolute;inset:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");}
+
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1400px;}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:22px;}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--rose);}
+
+h1.hero-h{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(56px,6.5vw,96px);font-weight:800;line-height:0.88;letter-spacing:-4px;margin-bottom:26px;}
+h1.hero-h .l1{display:block;color:#fff;}
+h1.hero-h .l2{display:block;color:var(--rose);}
+h1.hero-h .l3{display:block;color:rgba(255,255,255,0.12);font-size:clamp(36px,4vw,60px);font-weight:700;letter-spacing:-3px;}
+
+.hero-sub{font-size:16px;color:var(--dim);max-width:440px;line-height:1.85;margin-bottom:36px;font-weight:300;}
+.hero-btns{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;}
+.btn-rose{background:var(--rose);color:#fff;font-weight:600;font-size:14px;padding:14px 30px;border-radius:3px;border:none;cursor:pointer;transition:all .22s;letter-spacing:0.2px;}
+.btn-rose:hover{background:var(--rose2);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.5);font-size:14px;border:1px solid rgba(255,255,255,0.12);padding:13px 24px;border-radius:3px;cursor:pointer;transition:all .22s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.3);color:#fff;}
+
+.hero-stats{display:flex;gap:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;}
+.h-stat-n{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;}
+.h-stat-n em{color:var(--rose);font-style:normal;}
+.h-stat-l{font-size:10px;color:var(--dimmer);margin-top:3px;letter-spacing:0.5px;}
+
+.hero-logos{margin-top:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.hero-logos-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--dimmer);}
+.hero-logo-item{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dimmer);padding:3px 9px;border:1px solid rgba(255,255,255,0.07);border-radius:2px;}
+
+/* 2.5D FLOATING DECK CARDS */
+.hero-right{position:relative;height:520px;perspective:1000px;}
+.deck-scene{position:relative;width:100%;height:100%;transform-style:preserve-3d;}
+
+.dc-main{
+  position:absolute;width:88%;max-width:420px;height:260px;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotateX(10deg) rotateY(-14deg);
+  background:linear-gradient(140deg,#2a1020,#180810);
+  border:1px solid rgba(218,82,94,0.28);
+  border-radius:12px;
+  box-shadow:0 40px 100px rgba(0,0,0,0.65),0 0 0 1px rgba(218,82,94,0.08),inset 0 1px 0 rgba(255,255,255,0.06);
+  animation:dc-float1 6s ease-in-out infinite;
+  transform-style:preserve-3d;
+  padding:22px 24px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  z-index:10;
+}
+.dc-back{
+  position:absolute;width:80%;max-width:380px;height:240px;
+  top:58%;left:58%;
+  transform:translate(-50%,-50%) rotateX(12deg) rotateY(-10deg) translateZ(-60px);
+  background:linear-gradient(140deg,#3a1828,#241018);
+  border:1px solid rgba(218,82,94,0.1);
+  border-radius:12px;
+  opacity:0.55;
+  animation:dc-float2 7.5s ease-in-out infinite;
+  z-index:8;
+}
+.dc-side-a{
+  position:absolute;width:180px;height:112px;
+  top:10%;right:2%;
+  transform:rotateX(7deg) rotateY(-20deg) rotateZ(-3deg);
+  background:linear-gradient(140deg,#0D1A3E,#1a3060);
+  border:1px solid rgba(74,122,220,0.3);
+  border-radius:8px;
+  animation:dc-float3 5.5s ease-in-out infinite;
+  z-index:6;
+  padding:12px 14px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.dc-side-b{
+  position:absolute;width:150px;height:96px;
+  top:7%;left:0%;
+  transform:rotateX(5deg) rotateY(16deg) rotateZ(4deg);
+  background:linear-gradient(140deg,#0d1f1a,#183028);
+  border:1px solid rgba(45,200,168,0.3);
+  border-radius:8px;
+  animation:dc-float4 8s ease-in-out infinite;
+  z-index:6;
+  padding:11px 13px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.dc-side-c{
+  position:absolute;width:140px;height:88px;
+  bottom:8%;left:4%;
+  transform:rotateX(-4deg) rotateY(18deg) rotateZ(-2deg);
+  background:linear-gradient(140deg,#1a0d2e,#2d1848);
+  border:1px solid rgba(176,122,232,0.28);
+  border-radius:8px;
+  animation:dc-float5 6.8s ease-in-out infinite;
+  z-index:6;
+  padding:10px 12px;
+}
+
+@keyframes dc-float1{0%,100%{transform:translate(-50%,-50%) rotateX(10deg) rotateY(-14deg) translateY(0);}50%{transform:translate(-50%,-50%) rotateX(8deg) rotateY(-11deg) translateY(-14px);}}
+@keyframes dc-float2{0%,100%{transform:translate(-50%,-50%) rotateX(12deg) rotateY(-10deg) translateZ(-60px) translateY(0);}50%{transform:translate(-50%,-50%) rotateX(9deg) rotateY(-7deg) translateZ(-60px) translateY(-9px);}}
+@keyframes dc-float3{0%,100%{transform:rotateX(7deg) rotateY(-20deg) rotateZ(-3deg) translateY(0);}50%{transform:rotateX(5deg) rotateY(-18deg) rotateZ(-2deg) translateY(-11px);}}
+@keyframes dc-float4{0%,100%{transform:rotateX(5deg) rotateY(16deg) rotateZ(4deg) translateY(0);}50%{transform:rotateX(3deg) rotateY(14deg) rotateZ(3deg) translateY(-9px);}}
+@keyframes dc-float5{0%,100%{transform:rotateX(-4deg) rotateY(18deg) rotateZ(-2deg) translateY(0);}50%{transform:rotateX(-3deg) rotateY(16deg) rotateZ(-1deg) translateY(-8px);}}
+
+.dc-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.dc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.3px;}
+.dc-bars{display:flex;gap:5px;align-items:flex-end;height:44px;}
+.dc-bar{border-radius:2px 2px 0 0;}
+.sm-tag{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);}
+.sm-title{font-family:'Bricolage Grotesque',sans-serif;font-size:10px;font-weight:800;color:#fff;margin-top:3px;}
+.sm-lines{display:flex;flex-direction:column;gap:3px;margin-top:6px;}
+.sm-line{height:2px;border-radius:1px;background:rgba(255,255,255,0.1);}
+.sm-line.s{width:55%;}.sm-line.m{width:75%;}
+
+.dc-badge{position:absolute;background:rgba(9,8,10,0.92);border:1px solid rgba(218,82,94,0.25);border-radius:8px;padding:9px 13px;backdrop-filter:blur(16px);z-index:12;}
+.dc-badge.b1{bottom:14%;left:0%;animation:b-float1 5.5s ease-in-out infinite;}
+.dc-badge.b2{top:20%;right:-2%;animation:b-float2 6.5s ease-in-out infinite;}
+.dc-badge.b3{top:48%;right:4%;animation:b-float3 7s ease-in-out infinite;}
+@keyframes b-float1{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@keyframes b-float2{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes b-float3{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.badge-label{font-size:8px;color:var(--dimmer);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.badge-val{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
+.badge-val em{color:var(--rose);font-style:normal;}
+.badge-dot{display:inline-block;width:6px;height:6px;background:#4ade80;border-radius:50%;margin-right:5px;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+/* MARQUEE */
+.marquee{padding:16px 0;background:var(--ink2);overflow:hidden;border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);}
+.mtrack{display:flex;gap:44px;white-space:nowrap;animation:mq 26s linear infinite;}
+.mq-item{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.16);display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.mq-dot{width:3px;height:3px;background:var(--rose);border-radius:50%;opacity:0.5;}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ROTATE SECTION */
+.rotate-section{padding:112px 0;background:var(--ink);overflow:hidden;position:relative;}
+.rotate-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.016) 1px,transparent 1px);background-size:52px 52px;}
+.rotate-header{text-align:center;padding:0 52px;margin-bottom:80px;position:relative;z-index:2;}
+.rotate-track{display:flex;gap:20px;align-items:center;justify-content:center;position:relative;z-index:2;padding:0 4%;}
+.rot-c{border-radius:10px;overflow:hidden;flex-shrink:0;transition:transform 0.65s cubic-bezier(0.23,1,0.32,1),opacity 0.65s ease,box-shadow 0.65s ease;}
+.rot-c.pos-l2{width:230px;height:142px;transform:perspective(1400px) rotateY(44deg) rotateX(9deg) scale(0.85);opacity:0.28;z-index:1;}
+.rot-c.pos-l1{width:290px;height:178px;transform:perspective(1400px) rotateY(22deg) rotateX(5deg) scale(0.92);opacity:0.6;z-index:2;}
+.rot-c.pos-c{width:420px;height:258px;transform:perspective(1400px) rotateY(0deg) rotateX(0deg);opacity:1;z-index:5;box-shadow:0 60px 120px rgba(0,0,0,0.7),0 0 0 1px rgba(218,82,94,0.18);}
+.rot-c.pos-r1{width:290px;height:178px;transform:perspective(1400px) rotateY(-22deg) rotateX(5deg) scale(0.92);opacity:0.6;z-index:2;}
+.rot-c.pos-r2{width:230px;height:142px;transform:perspective(1400px) rotateY(-44deg) rotateX(9deg) scale(0.85);opacity:0.28;z-index:1;}
+.rot-c-inner{width:100%;height:100%;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;}
+.rci-tag{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
+.rci-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.3px;}
+.rci-bars{display:flex;gap:4px;align-items:flex-end;}
+.rci-bar{border-radius:2px 2px 0 0;}
+.rci-lines{display:flex;flex-direction:column;gap:3px;}
+.rci-line{height:3px;border-radius:2px;}
+.rotate-caption{text-align:center;margin-top:36px;font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;position:relative;z-index:2;}
+
+/* BA SECTION */
+.ba-section{background:var(--ink);padding:100px 52px;}
+.ba-intro-row{text-align:center;max-width:720px;margin:0 auto 48px;}
+.ba-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.05);margin-bottom:60px;}
+.ba-stat{background:var(--ink2);padding:24px 22px;transition:background .2s;}
+.ba-stat:hover{background:var(--ink3);}
+.ba-stat-n{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;}
+.ba-stat-n em{color:var(--rose);font-style:normal;}
+.ba-stat-l{font-size:10px;color:var(--dim);margin-top:4px;font-weight:300;}
+.ba-stack{display:flex;flex-direction:column;gap:16px;}
+.ba-showcase{background:var(--ink2);border:1px solid rgba(255,255,255,0.05);border-radius:14px;overflow:hidden;transition:box-shadow .4s ease;}
+.ba-showcase:hover{box-shadow:0 20px 80px rgba(0,0,0,0.5);}
+.ba-showcase-head{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.05);}
+.ba-showcase-left{display:flex;align-items:center;gap:14px;}
+.ba-showcase-num{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:800;color:rgba(218,82,94,0.35);letter-spacing:2px;}
+.ba-showcase-name{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.3px;}
+.ba-showcase-type{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);font-weight:700;border:1px solid rgba(218,82,94,0.25);padding:3px 10px;border-radius:2px;}
+.ba-slides-row{display:grid;grid-template-columns:1fr 72px 1fr;align-items:center;padding:28px 28px 24px;}
+.ba-slide-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:20px;width:fit-content;}
+.ba-slide-label.after{color:var(--rose);background:rgba(218,82,94,0.1);}
+.ba-slide-before,.ba-slide-after{border-radius:8px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 12px 40px rgba(0,0,0,0.35);transition:transform .35s ease;}
+.ba-showcase:hover .ba-slide-before,.ba-showcase:hover .ba-slide-after{transform:scale(1.01);}
+.ba-slide-before{background:#F0EBE5;border:1px solid var(--bonedk);}
+.ba-slide-after{border:1px solid rgba(255,255,255,0.07);}
+.ba-slide-content{width:100%;height:100%;padding:16px 20px;display:flex;flex-direction:column;}
+.ba-mock-window{display:flex;gap:4px;margin-bottom:10px;}
+.ba-mock-dot{width:7px;height:7px;border-radius:50%;background:#ddd;}
+.ba-big-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(13px,1.6vw,17px);font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;line-height:1.2;}
+.ba-mock-lines{display:flex;flex-direction:column;gap:5px;}
+.ba-mock-line{height:5px;background:rgba(0,0,0,0.08);border-radius:2px;}
+.ba-mock-bars{display:flex;gap:5px;align-items:flex-end;height:52px;margin-top:auto;padding-top:8px;}
+.ba-mock-bar{flex:1;border-radius:2px 2px 0 0;min-width:8px;}
+.ba-slide-topbar{height:3px;width:100%;margin-bottom:10px;}
+.ba-slide-pill{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:20px;display:inline-block;margin-bottom:8px;width:fit-content;}
+.ba-metrics-row{display:flex;gap:14px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);}
+.ba-metric-n{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px;line-height:1;}
+.ba-metric-l{font-size:8px;color:rgba(255,255,255,0.3);margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
+.ba-arrow-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+.ba-arrow-vert{width:1px;height:24px;background:rgba(218,82,94,0.28);}
+.ba-arrow-btn{width:40px;height:40px;background:var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(218,82,94,0.35);flex-shrink:0;}
+.ba-arrow-brand{font-size:7px;color:var(--rose);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:center;margin-top:2px;}
+.ba-outcome{display:flex;align-items:center;gap:10px;padding:14px 28px;background:rgba(74,222,128,0.04);border-top:1px solid rgba(74,222,128,0.08);font-size:12px;color:var(--dim);line-height:1.6;}
+.ba-outcome-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;flex-shrink:0;}
+
+/* SECTION SYSTEM */
+.section{padding:100px 52px;}
+.section.dark{background:var(--ink);}
+.section.darker{background:var(--ink2);}
+.section.light{background:var(--cream);}
+.section.white{background:#fff;}
+.sec-eyebrow{font-family:'Bricolage Grotesque',sans-serif;font-size:9px;font-weight:800;letter-spacing:4px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+.sec-eyebrow::before{content:'';width:18px;height:1px;}
+.ew-d{color:rgba(255,255,255,0.22);}.ew-d::before{background:rgba(255,255,255,0.14);}
+.ew-r{color:var(--rose);}.ew-r::before{background:var(--rose);}
+.sec-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-3px;line-height:0.9;}
+.sec-h.xl{font-size:clamp(52px,6vw,80px);}
+.sec-h.lg{font-size:clamp(42px,5vw,66px);}
+.sec-h.md{font-size:clamp(32px,3.5vw,48px);}
+.sec-h.on-dark{color:#fff;}
+.sec-h.on-light{color:var(--ltext);}
+.sec-h em{color:var(--rose);font-style:normal;}
+.sec-h .ghost{color:rgba(255,255,255,0.09);}
+.sec-h .ghost-l{color:rgba(9,8,10,0.1);}
+.sec-body{font-size:15px;line-height:1.85;font-weight:300;max-width:520px;margin-top:14px;}
+.sec-body.on-dark{color:var(--dim);}
+.sec-body.on-light{color:var(--lmuted);}
+
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.svc-card{
+  background:var(--ink2);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:12px;
+  padding:32px 28px;
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s ease,border-color .3s;
+  cursor:default;
+}
+.svc-card:hover{
+  transform:perspective(900px) rotateX(-3deg) rotateY(4deg) translateY(-8px) translateZ(10px);
+  box-shadow:12px 28px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(218,82,94,0.2);
+  border-color:rgba(218,82,94,0.18);
+}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--rose3));transform:scaleX(0);transition:transform .35s;transform-origin:left;}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-card::after{content:'';position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(218,82,94,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;transition:opacity .3s;opacity:0;}
+.svc-card:hover::after{opacity:1;}
+.svc-num{font-family:'Bricolage Grotesque',sans-serif;font-size:10px;font-weight:800;color:rgba(218,82,94,0.3);letter-spacing:2px;margin-bottom:16px;}
+.svc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.4px;margin-bottom:10px;}
+.svc-desc{font-size:12px;color:var(--dim);line-height:1.78;font-weight:300;}
+.svc-price{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);font-weight:700;}
+.svc-price::after{content:'→';transition:transform .2s;}
+.svc-card:hover .svc-price::after{transform:translateX(4px);}
+
+/* PORTFOLIO */
+.pf-filter{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap;}
+.pf-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.32);font-size:11px;font-weight:500;padding:6px 14px;border-radius:2px;cursor:pointer;transition:all .2s;}
+.pf-btn.active,.pf-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose);}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.pf-card{border-radius:10px;overflow:hidden;background:var(--ink2);border:1px solid rgba(255,255,255,0.05);cursor:pointer;transform-style:preserve-3d;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s ease;}
+.pf-card:hover{transform:perspective(1000px) rotateX(-2deg) rotateY(3deg) translateY(-6px);box-shadow:10px 24px 60px rgba(0,0,0,0.5);}
+.pf-card.wide{grid-column:span 2;}
+.pf-thumb{display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.pf-thumb.h220{height:220px;}.pf-thumb.h175{height:175px;}
+.pt1{background:linear-gradient(140deg,#1a0a0c,#3d1c22);}
+.pt2{background:linear-gradient(140deg,#0a1428,#1a3060);}
+.pt3{background:linear-gradient(140deg,#0a1e18,#183028);}
+.pt4{background:linear-gradient(140deg,#18102a,#301848);}
+.pf-mock{width:64%;background:rgba(255,255,255,0.04);border-radius:5px;border:1px solid rgba(255,255,255,0.07);padding:14px;transition:transform .4s;}
+.pf-card:hover .pf-mock{transform:translateZ(20px) scale(1.03);}
+.pf-mock-t{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:800;color:rgba(255,255,255,0.9);margin-bottom:5px;letter-spacing:-0.2px;}
+.pf-mock-l{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:3px;}
+.pf-mock-l.s{width:55%;}.pf-mock-l.m{width:75%;}
+.pf-mock-a{height:2px;border-radius:1px;margin-top:7px;width:32%;}
+.pf-info{padding:14px 18px;border-top:1px solid rgba(255,255,255,0.04);}
+.pf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;}
+.pf-name{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-0.2px;}
+.pf-type{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);font-weight:700;}
+.pf-detail{font-size:11px;color:var(--dimmer);}
+.pf-result{font-size:10px;color:#4ade80;margin-top:2px;font-weight:600;}
+
+/* TESTIMONIALS */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.tc{background:var(--cream2);border:1px solid var(--bonedk);border-radius:10px;padding:28px 24px;transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease;}
+.tc:hover{transform:perspective(800px) rotateX(-2deg) translateY(-5px);box-shadow:0 16px 44px rgba(218,82,94,0.08);}
+.tc.feat{background:#fff;border-color:rgba(218,82,94,0.22);}
+.tc-stars{display:flex;gap:2px;margin-bottom:12px;}
+.tc-star{color:var(--rose);font-size:11px;}
+.tc-q{font-size:13px;color:#4A4040;line-height:1.8;font-style:italic;font-weight:300;margin-bottom:18px;}
+.tc-auth{display:flex;align-items:center;gap:9px;}
+.tc-av{width:32px;height:32px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
+.tc-name{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:800;color:var(--ltext);letter-spacing:-0.2px;}
+.tc-role{font-size:10px;color:var(--lmuted);}
+
+/* PRICING */
+.pg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:48px;}
+.pc{background:var(--ink2);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:32px 26px;position:relative;transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease,border-color .3s;}
+.pc:hover{transform:perspective(800px) rotateX(-2deg) translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4);border-color:rgba(218,82,94,0.15);}
+.pc.feat{border-top:2px solid var(--rose);border-color:rgba(218,82,94,0.25);}
+.pc-badge{position:absolute;top:-11px;left:22px;background:var(--rose);color:#fff;font-size:9px;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;}
+.pc-tier{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--dimmer);margin-bottom:10px;}
+.pc-amt{font-family:'Bricolage Grotesque',sans-serif;font-size:44px;font-weight:800;letter-spacing:-2px;color:#fff;line-height:1;margin-bottom:4px;}
+.pc-amt sup{font-size:18px;font-weight:400;color:var(--dimmer);vertical-align:super;}
+.pc-note{font-size:11px;color:var(--dimmer);margin-bottom:20px;}
+.pc-feats{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;}
+.pc-feats li{font-size:12px;display:flex;align-items:flex-start;gap:7px;color:var(--dimmer);}
+.pc-feats li.on{color:rgba(255,255,255,0.78);}
+.pc-feats li::before{content:'';width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.05);flex-shrink:0;margin-top:1px;}
+.pc-feats li.on::before{background:rgba(218,82,94,0.2);}
+.btn-pc{display:block;text-align:center;padding:11px;border-radius:3px;font-weight:600;font-size:12px;border:none;cursor:pointer;transition:all .2s;}
+.btn-pc.out{border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);background:transparent;}
+.btn-pc.out:hover{border-color:var(--rose);color:var(--rose);}
+.btn-pc.sol{background:var(--rose);color:#fff;}
+.btn-pc.sol:hover{background:var(--rose2);}
+
+/* FAQ */
+.faq-wrap{max-width:700px;margin:44px auto 0;}
+.fi{border-bottom:1px solid rgba(255,255,255,0.06);}
+.fq{padding:18px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:-0.3px;transition:color .2s;}
+.fq:hover,.fi.open .fq{color:#fff;}
+.fi-icon{font-size:18px;color:var(--dimmer);transition:transform .3s;line-height:1;}
+.fa{font-size:13px;color:var(--dim);line-height:1.78;padding-bottom:18px;display:none;font-weight:300;}
+.fi.open .fa{display:block;}.fi.open .fi-icon{transform:rotate(45deg);color:var(--rose);}
+.fi.lf{border-bottom-color:rgba(9,8,10,0.08);}
+.fi.lf .fq{color:rgba(9,8,10,0.45);}
+.fi.lf .fq:hover,.fi.lf.open .fq{color:var(--ltext);}
+.fi.lf .fa{color:var(--lmuted);}
+.fi.lf .fi-icon{color:rgba(9,8,10,0.22);}
+.fi.lf.open .fi-icon{color:var(--rose);}
+
+/* ABOUT */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.av-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px;}
+.av-card{background:var(--ink2);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:26px;transition:transform .3s,box-shadow .3s,border-color .3s;transform-style:preserve-3d;}
+.av-card:hover{transform:perspective(800px) rotateX(-2deg) rotateY(2deg) translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3);border-color:rgba(218,82,94,0.15);}
+.av-icon{font-size:22px;margin-bottom:12px;}
+.av-title{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:7px;}
+.av-desc{font-size:12px;color:var(--dim);line-height:1.72;font-weight:300;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.team-card{background:var(--cream2);border:1px solid var(--bonedk);border-radius:10px;padding:26px;transition:transform .3s,box-shadow .3s;transform-style:preserve-3d;}
+.team-card:hover{transform:perspective(800px) rotateX(-2deg) translateY(-4px);box-shadow:0 12px 36px rgba(218,82,94,0.08);}
+.team-av{width:52px;height:52px;border-radius:50%;background:var(--rose);margin:0 0 14px;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:800;color:#fff;}
+.team-name{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;color:var(--ltext);letter-spacing:-0.3px;margin-bottom:3px;}
+.team-role{font-size:11px;color:var(--lmuted);margin-bottom:8px;font-weight:500;}
+.team-desc{font-size:11px;color:var(--lmuted);line-height:1.65;font-weight:300;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px;}
+.cf{display:flex;flex-direction:column;gap:12px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fl{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--dimmer);}
+.fi-i,.fi-t,.fi-s{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:11px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s;width:100%;}
+.fi-i:focus,.fi-t:focus,.fi-s:focus{border-color:rgba(218,82,94,0.4);}
+.fi-i::placeholder,.fi-t::placeholder{color:rgba(255,255,255,0.2);}
+.fi-s option{background:var(--ink2);}
+.fi-t{resize:vertical;min-height:110px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ci-list{display:flex;flex-direction:column;gap:12px;}
+.ci{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;transition:all .2s;transform-style:preserve-3d;}
+.ci:hover{background:rgba(255,255,255,0.05);transform:perspective(600px) rotateX(-1deg) translateY(-2px);}
+.ci-icon{font-size:18px;flex-shrink:0;}
+.ci-title{font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;color:#fff;margin-bottom:2px;letter-spacing:-0.2px;}
+.ci-val{font-size:11px;color:var(--dim);line-height:1.55;}
+
+/* CTA BANNER */
+.cta-banner{padding:100px 52px;text-align:center;position:relative;overflow:hidden;}
+.cta-banner.dark{background:var(--ink);}
+.cta-banner.rose{background:var(--rose);}
+.cta-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:22px 22px;}
+.cta-banner>*{position:relative;z-index:1;}
+.cta-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-3px;line-height:0.88;margin-bottom:16px;font-size:clamp(48px,5.5vw,72px);}
+.cta-h.on-dark,.cta-h.on-rose{color:#fff;}
+.cta-h em{opacity:0.15;font-style:normal;}
+.cta-p{font-size:15px;color:rgba(255,255,255,0.62);max-width:400px;margin:0 auto 28px;font-weight:300;line-height:1.78;}
+.cta-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.btn-white{background:#fff;font-weight:600;font-size:13px;padding:13px 28px;border-radius:3px;border:none;cursor:pointer;transition:all .2s;}
+.btn-white.on-dark{color:var(--ink);}
+.btn-white.on-rose{color:var(--rose);}
+.btn-white:hover{transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(255,255,255,0.28);color:rgba(255,255,255,0.65);font-weight:500;font-size:13px;padding:12px 22px;border-radius:3px;background:none;cursor:pointer;transition:all .2s;}
+.btn-outline:hover{border-color:#fff;color:#fff;}
+
+/* PROOF SECTION */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);margin-top:56px;}
+.proof-item{background:var(--ink2);padding:28px 24px;text-align:center;}
+.proof-n{font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:800;letter-spacing:-2px;color:#fff;}
+.proof-n em{color:var(--rose);font-style:normal;}
+.proof-l{font-size:11px;color:var(--dimmer);margin-top:5px;font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--ink2);border-top:1px solid rgba(255,255,255,0.04);padding:52px 52px 30px;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:40px;}
+.f-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px;color:#fff;}
+.f-logo em{color:var(--rose);font-style:normal;}
+.f-desc{font-size:12px;color:var(--dimmer);line-height:1.7;max-width:210px;font-weight:300;}
+.f-col h5{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dimmer);margin-bottom:11px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.f-col ul a{font-size:12px;color:var(--dimmer);text-decoration:none;transition:color .2s;}
+.f-col ul a:hover{color:#fff;}
+.f-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;gap:8px;}
+.f-bottom p{font-size:10px;color:var(--dimmer);}
+.f-pill{background:rgba(218,82,94,0.08);border:1px solid rgba(218,82,94,0.15);color:var(--rose);font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;}
+
+/* CSS-ONLY SCROLL REVEAL — Wix compatible, no JS needed */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.reveal{animation:fadeUp 0.7s ease both;}
+.reveal:nth-child(2){animation-delay:.1s;}
+.reveal:nth-child(3){animation-delay:.18s;}
+.reveal:nth-child(4){animation-delay:.26s;}
+.reveal:nth-child(5){animation-delay:.34s;}
+.reveal:nth-child(6){animation-delay:.42s;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}
+  .hero{padding:52px 24px 64px;}
+}
+@media(max-width:960px){
+  nav{padding:0 18px;}.nav-links{display:none;}
+  .section{padding:64px 20px;}
+  .ba-section{padding:64px 20px;}
+  .rotate-section{padding:72px 0;}
+  .svc-grid,.tg,.pg,.av-grid,.team-grid{grid-template-columns:1fr;}
+  .pf-grid,.ba-grid,.ba-intro-row,.about-split,.contact-grid,.ft,.proof-grid{grid-template-columns:1fr;}
+  .pf-card.wide{grid-column:span 1;}
+  .cta-banner{padding:64px 20px;}
+  footer{padding:40px 20px 24px;}
+  .frow{grid-template-columns:1fr;}
+  .faq-wrap{margin:36px 0 0;}
+  .rotate-track{gap:10px;}
+  .rot-c.pos-l2,.rot-c.pos-r2{display:none;}
+  .ba-stats-row{grid-template-columns:1fr 1fr;}
+  .ba-slides-row{grid-template-columns:1fr 40px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Slide<em>Whizz</em></div>
+  <ul class="nav-links">
+    <li><a href="#top">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote →</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hbg-grid"></div>
+    <div class="hbg-glow1"></div>
+    <div class="hbg-glow2"></div>
+    <div class="hbg-noise"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Your Design Presentation Partner</div>
+      <h1 class="hero-h">
+        <span class="l1">Slides That</span>
+        <span class="l2">Close Deals.</span>
+        <span class="l3">Not Just Look Good.</span>
+      </h1>
+      <p class="hero-sub">Premium PowerPoint &amp; pitch deck design for startups, enterprises, and consultants who need to win — every time they present. Delivered in 48 hours.</p>
+      <div class="hero-btns">
+        <button class="btn-rose" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start Your Project →</button>
+        <button class="btn-ghost" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">View Our Work</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="h-stat-n">500<em>+</em></div><div class="h-stat-l">Decks Delivered</div></div>
+        <div><div class="h-stat-n">98<em>%</em></div><div class="h-stat-l">Satisfaction</div></div>
+        <div><div class="h-stat-n">48<em>hr</em></div><div class="h-stat-l">Turnaround</div></div>
+        <div><div class="h-stat-n">$4M<em>+</em></div><div class="h-stat-l">Raised by Clients</div></div>
+      </div>
+      <div class="hero-logos">
+        <div class="hero-logos-lbl">Trusted by</div>
+        <div class="hero-logo-item">Microsoft</div>
+        <div class="hero-logo-item">SALT Co.</div>
+        <div class="hero-logo-item">Infrasec</div>
+        <div class="hero-logo-item">Yabie</div>
+      </div>
+    </div>
+    <!-- 2.5D FLOATING DECK CARDS -->
+    <div class="hero-right">
+      <div class="deck-scene">
+        <div class="dc-back"></div>
+        <div class="dc-main" id="mainDeck">
+          <div>
+            <div class="dc-tag">Series A Pitch Deck</div>
+            <div class="dc-title">The Future of<br>Enterprise Productivity</div>
+          </div>
+          <div>
+            <div class="dc-bars">
+              <div class="dc-bar" style="width:14px;height:40%;background:rgba(218,82,94,0.35);"></div>
+              <div class="dc-bar" style="width:14px;height:55%;background:rgba(218,82,94,0.48);"></div>
+              <div class="dc-bar" style="width:14px;height:75%;background:rgba(218,82,94,0.62);"></div>
+              <div class="dc-bar" style="width:14px;height:94%;background:#DA525E;"></div>
+              <div class="dc-bar" style="width:14px;height:68%;background:rgba(218,82,94,0.54);"></div>
+              <div class="dc-bar" style="width:14px;height:82%;background:rgba(218,82,94,0.68);"></div>
+            </div>
+            <div style="height:2px;width:28%;background:var(--rose);border-radius:1px;margin-top:8px;"></div>
+          </div>
+        </div>
+        <div class="dc-side-a">
+          <div><div class="sm-tag" style="color:#6a9ad0;">Corporate</div><div class="sm-title">Board Meeting<br>Q4 2025</div></div>
+          <div class="sm-lines"><div class="sm-line m" style="background:rgba(74,122,181,0.25);"></div><div class="sm-line s" style="background:rgba(74,122,181,0.18);"></div></div>
+        </div>
+        <div class="dc-side-b">
+          <div><div class="sm-tag" style="color:#2DC8A8;">Sales Deck</div><div class="sm-title">Close More<br>Deals</div></div>
+          <div class="sm-lines"><div class="sm-line m" style="background:rgba(45,200,168,0.22);"></div><div class="sm-line s" style="background:rgba(45,200,168,0.15);"></div></div>
+        </div>
+        <div class="dc-side-c">
+          <div class="sm-tag" style="color:#b07ae8;">Training</div>
+          <div class="sm-title" style="font-size:9px;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;margin-top:3px;">Leadership<br>Program</div>
+        </div>
+        <div class="dc-badge b1">
+          <div class="badge-label">Decks Delivered</div>
+          <div class="badge-val">500<em>+</em></div>
+        </div>
+        <div class="dc-badge b2">
+          <div class="badge-label">Avg. Turnaround</div>
+          <div class="badge-val"><em>48</em> Hours</div>
+        </div>
+        <div class="dc-badge b3">
+          <div class="badge-label"><span class="badge-dot"></span>Live Project</div>
+          <div class="badge-val" style="font-size:12px;">In Design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mtrack">
+    <div class="mq-item"><span class="mq-dot"></span>Pitch Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Investor Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Sales Presentations</div>
+    <div class="mq-item"><span class="mq-dot"></span>Corporate Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Conference Keynotes</div>
+    <div class="mq-item"><span class="mq-dot"></span>Training Materials</div>
+    <div class="mq-item"><span class="mq-dot"></span>Annual Reports</div>
+    <div class="mq-item"><span class="mq-dot"></span>Board Presentations</div>
+    <div class="mq-item"><span class="mq-dot"></span>Pitch Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Investor Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Sales Presentations</div>
+    <div class="mq-item"><span class="mq-dot"></span>Corporate Decks</div>
+    <div class="mq-item"><span class="mq-dot"></span>Conference Keynotes</div>
+    <div class="mq-item"><span class="mq-dot"></span>Training Materials</div>
+    <div class="mq-item"><span class="mq-dot"></span>Annual Reports</div>
+    <div class="mq-item"><span class="mq-dot"></span>Board Presentations</div>
+  </div>
+</div>
+
+<!-- ROTATING SLIDES -->
+<section class="rotate-section" id="rotSec">
+  <div class="rotate-bg-grid"></div>
+  <div class="rotate-header">
+    <div class="sec-eyebrow ew-d" style="justify-content:center;">Work In Motion</div>
+    <h2 class="sec-h xl on-dark">Every Deck.<br><em>A Work of Art.</em></h2>
+    <p style="font-size:14px;color:var(--dim);margin-top:14px;font-weight:300;opacity:0.7;">Our portfolio, in living color</p>
+  </div>
+  <div class="rotate-track" id="rotTrack">
+    <div class="rot-c pos-l2" style="background:linear-gradient(140deg,#18102a,#301848);">
+      <div class="rot-c-inner"><div><div class="rci-tag">Training</div><div class="rci-title" style="font-size:11px;">Leadership Development</div></div><div class="rci-lines"><div class="rci-line" style="height:3px;width:100%;background:rgba(176,122,232,0.2);border-radius:2px;"></div><div class="rci-line" style="height:3px;width:70%;background:rgba(176,122,232,0.14);border-radius:2px;"></div></div></div>
+    </div>
+    <div class="rot-c pos-l1" style="background:linear-gradient(140deg,#0a1e18,#183028);">
+      <div class="rot-c-inner"><div><div class="rci-tag">Sales</div><div class="rci-title" style="font-size:13px;">Close More Deals in 2025</div></div><div class="rci-bars" style="height:38px;gap:4px;">
+        <div class="rci-bar" style="width:11px;height:50%;background:rgba(45,200,168,0.4);border-radius:2px 2px 0 0;"></div>
+        <div class="rci-bar" style="width:11px;height:72%;background:rgba(45,200,168,0.6);border-radius:2px 2px 0 0;"></div>
+        <div class="rci-bar" style="width:11px;height:90%;background:#2DC8A8;border-radius:2px 2px 0 0;"></div>
+      </div></div>
+    </div>
+    <div class="rot-c pos-c" style="background:linear-gradient(140deg,#1a0a0c,#3d1c22);">
+      <div class="rot-c-inner">
+        <div><div class="rci-tag">Series A Pitch Deck</div><div class="rci-title" style="font-size:20px;">The Future of<br>Enterprise Productivity</div></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+          <div class="rci-bars" style="height:52px;gap:5px;">
+            <div class="rci-bar" style="width:16px;height:42%;background:rgba(218,82,94,0.32);border-radius:2px 2px 0 0;"></div>
+            <div class="rci-bar" style="width:16px;height:58%;background:rgba(218,82,94,0.48);border-radius:2px 2px 0 0;"></div>
+            <div class="rci-bar" style="width:16px;height:78%;background:rgba(218,82,94,0.65);border-radius:2px 2px 0 0;"></div>
+            <div class="rci-bar" style="width:16px;height:96%;background:#DA525E;border-radius:2px 2px 0 0;"></div>
+            <div class="rci-bar" style="width:16px;height:70%;background:rgba(218,82,94,0.55);border-radius:2px 2px 0 0;"></div>
+          </div>
+          <div style="text-align:right;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:#DA525E;letter-spacing:-1px;">$12M</div><div style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;">ARR</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rot-c pos-r1" style="background:linear-gradient(140deg,#0a1428,#1a3060);">
+      <div class="rot-c-inner"><div><div class="rci-tag">Corporate</div><div class="rci-title" style="font-size:13px;">Board Review Q3 2025</div></div><div class="rci-lines" style="margin-top:8px;"><div class="rci-line" style="height:3px;width:100%;background:rgba(74,122,181,0.25);border-radius:2px;"></div><div class="rci-line" style="height:3px;width:70%;background:rgba(74,122,181,0.18);border-radius:2px;margin-top:4px;"></div></div></div>
+    </div>
+    <div class="rot-c pos-r2" style="background:linear-gradient(140deg,#141414,#2a2a2a);">
+      <div class="rot-c-inner"><div><div class="rci-tag">Keynote</div><div class="rci-title" style="font-size:11px;">Innovation Summit 2025</div></div><div class="rci-lines" style="margin-top:6px;"><div class="rci-line" style="height:3px;width:100%;background:rgba(255,255,255,0.07);border-radius:2px;"></div></div></div>
+    </div>
+  </div>
+  <div class="rotate-caption">Our work — presented beautifully</div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="ba-intro-row reveal">
+    <div class="sec-eyebrow ew-r">The SlideWhizz Effect</div>
+    <h2 class="sec-h xl on-dark" style="margin-bottom:16px;">See the<br><em>Transformation.</em></h2>
+    <p class="sec-body on-dark" style="margin:0 auto;text-align:center;">Real before and after from actual client projects. Every deck we touch becomes clear, compelling, and conversion-ready.</p>
+  </div>
+  <div class="ba-stats-row reveal">
+    <div class="ba-stat"><div class="ba-stat-n">9.8<em>/10</em></div><div class="ba-stat-l">Client satisfaction</div></div>
+    <div class="ba-stat"><div class="ba-stat-n">$4M<em>+</em></div><div class="ba-stat-l">Raised by clients</div></div>
+    <div class="ba-stat"><div class="ba-stat-n">48<em>hr</em></div><div class="ba-stat-l">Avg. turnaround</div></div>
+    <div class="ba-stat"><div class="ba-stat-n">500<em>+</em></div><div class="ba-stat-l">Decks delivered</div></div>
+  </div>
+  <div class="ba-stack">
+    <div class="ba-showcase reveal">
+      <div class="ba-showcase-head">
+        <div class="ba-showcase-left"><span class="ba-showcase-num">01</span><span class="ba-showcase-name">TechVenture — Series A Pitch Deck</span></div>
+        <span class="ba-showcase-type">Pitch Deck</span>
+      </div>
+      <div class="ba-slides-row">
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label">Before</div>
+          <div class="ba-slide-before">
+            <div class="ba-slide-content">
+              <div class="ba-mock-window"><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div></div>
+              <div class="ba-big-title" style="color:#aaa;">Q3 Business Review 2024</div>
+              <div class="ba-mock-lines"><div class="ba-mock-line" style="width:100%;"></div><div class="ba-mock-line" style="width:80%;"></div><div class="ba-mock-line" style="width:92%;"></div><div class="ba-mock-line" style="width:66%;"></div><div class="ba-mock-line" style="width:84%;"></div></div>
+              <div class="ba-mock-bars"><div class="ba-mock-bar" style="height:35%;background:#ddd;"></div><div class="ba-mock-bar" style="height:52%;background:#ddd;"></div><div class="ba-mock-bar" style="height:44%;background:#ddd;"></div><div class="ba-mock-bar" style="height:68%;background:#ddd;"></div><div class="ba-mock-bar" style="height:48%;background:#ddd;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-arrow-col"><div class="ba-arrow-vert"></div><div class="ba-arrow-btn">→</div><div class="ba-arrow-vert"></div><div class="ba-arrow-brand">SlideWhizz</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label after">After</div>
+          <div class="ba-slide-after" style="background:linear-gradient(140deg,#1a0a0c,#3d1c22);">
+            <div class="ba-slide-content">
+              <div class="ba-slide-topbar" style="background:var(--rose);"></div>
+              <div class="ba-slide-pill" style="background:rgba(218,82,94,0.18);color:var(--rose);">Series A Pitch Deck</div>
+              <div class="ba-big-title" style="color:#DA525E;font-size:clamp(18px,2.2vw,26px);">$12M ARR.<br>340% Growth.</div>
+              <div class="ba-mock-bars" style="margin-top:auto;"><div class="ba-mock-bar" style="height:40%;background:rgba(218,82,94,0.35);"></div><div class="ba-mock-bar" style="height:58%;background:rgba(218,82,94,0.5);"></div><div class="ba-mock-bar" style="height:76%;background:rgba(218,82,94,0.65);"></div><div class="ba-mock-bar" style="height:95%;background:#DA525E;"></div><div class="ba-mock-bar" style="height:66%;background:rgba(218,82,94,0.52);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-outcome"><div class="ba-outcome-dot"></div>Raised $4.2M Series A within 6 weeks of presenting this deck</div>
+    </div>
+
+    <div class="ba-showcase reveal">
+      <div class="ba-showcase-head">
+        <div class="ba-showcase-left"><span class="ba-showcase-num">02</span><span class="ba-showcase-name">GlobalCorp — Executive Board Presentation</span></div>
+        <span class="ba-showcase-type">Corporate</span>
+      </div>
+      <div class="ba-slides-row">
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label">Before</div>
+          <div class="ba-slide-before">
+            <div class="ba-slide-content">
+              <div class="ba-mock-window"><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div></div>
+              <div class="ba-big-title" style="color:#aaa;">Q3 Results Summary</div>
+              <div class="ba-mock-lines"><div class="ba-mock-line" style="width:100%;"></div><div class="ba-mock-line" style="width:88%;"></div><div class="ba-mock-line" style="width:72%;"></div><div class="ba-mock-line" style="width:94%;"></div><div class="ba-mock-line" style="width:64%;"></div></div>
+              <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;"><div style="display:flex;gap:4px;"><div style="flex:1;height:6px;background:#e8e4e0;border-radius:2px;"></div><div style="flex:0.8;height:6px;background:#e8e4e0;border-radius:2px;"></div><div style="flex:0.6;height:6px;background:#e8e4e0;border-radius:2px;"></div></div><div style="display:flex;gap:4px;"><div style="flex:1;height:6px;background:#e0dbd6;border-radius:2px;"></div><div style="flex:0.8;height:6px;background:#e0dbd6;border-radius:2px;"></div><div style="flex:0.6;height:6px;background:#e0dbd6;border-radius:2px;"></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-arrow-col"><div class="ba-arrow-vert"></div><div class="ba-arrow-btn">→</div><div class="ba-arrow-vert"></div><div class="ba-arrow-brand">SlideWhizz</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label after">After</div>
+          <div class="ba-slide-after" style="background:linear-gradient(140deg,#0D1B3E,#1a3060);">
+            <div class="ba-slide-content">
+              <div class="ba-slide-topbar" style="background:#4a7ab5;"></div>
+              <div class="ba-slide-pill" style="background:rgba(74,122,181,0.2);color:#7aaee8;">Executive Board Q3</div>
+              <div class="ba-big-title" style="color:#7aaee8;font-size:clamp(16px,2vw,22px);">Q3 Exceeded<br>Targets by 40%</div>
+              <div class="ba-metrics-row"><div class="ba-metric"><div class="ba-metric-n" style="color:#7aaee8;">+40%</div><div class="ba-metric-l">Revenue</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#7aaee8;">$2M</div><div class="ba-metric-l">Budget</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#7aaee8;">98%</div><div class="ba-metric-l">Retention</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-outcome"><div class="ba-outcome-dot"></div>Board approved $2M additional budget at the presentation</div>
+    </div>
+
+    <div class="ba-showcase reveal">
+      <div class="ba-showcase-head">
+        <div class="ba-showcase-left"><span class="ba-showcase-num">03</span><span class="ba-showcase-name">SALT Collaboratory — NGO Donor Pitch</span></div>
+        <span class="ba-showcase-type">Nonprofit</span>
+      </div>
+      <div class="ba-slides-row">
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label">Before</div>
+          <div class="ba-slide-before">
+            <div class="ba-slide-content">
+              <div class="ba-mock-window"><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div></div>
+              <div class="ba-big-title" style="color:#aaa;">Our Mission &amp; Impact</div>
+              <div class="ba-mock-lines"><div class="ba-mock-line" style="width:100%;"></div><div class="ba-mock-line" style="width:74%;"></div><div class="ba-mock-line" style="width:86%;"></div><div class="ba-mock-line" style="width:58%;"></div><div class="ba-mock-line" style="width:80%;"></div><div class="ba-mock-line" style="width:68%;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-arrow-col"><div class="ba-arrow-vert"></div><div class="ba-arrow-btn">→</div><div class="ba-arrow-vert"></div><div class="ba-arrow-brand">SlideWhizz</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label after">After</div>
+          <div class="ba-slide-after" style="background:linear-gradient(140deg,#0d1f1a,#183028);">
+            <div class="ba-slide-content">
+              <div class="ba-slide-topbar" style="background:#2DC8A8;"></div>
+              <div class="ba-slide-pill" style="background:rgba(45,200,168,0.18);color:#2DC8A8;">Impact Report 2025</div>
+              <div class="ba-big-title" style="color:#2DC8A8;font-size:clamp(16px,2vw,22px);">2,000 Lives<br>Impacted.</div>
+              <div class="ba-metrics-row"><div class="ba-metric"><div class="ba-metric-n" style="color:#2DC8A8;">2K+</div><div class="ba-metric-l">Lives</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#2DC8A8;">15</div><div class="ba-metric-l">Countries</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#2DC8A8;">8yr</div><div class="ba-metric-l">Impact</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-outcome"><div class="ba-outcome-dot"></div>"Remarkably quick response with exceptional quality" — Hannah Berson, Founder &amp; CEO, SALT Collaboratory</div>
+    </div>
+
+    <div class="ba-showcase reveal">
+      <div class="ba-showcase-head">
+        <div class="ba-showcase-left"><span class="ba-showcase-num">04</span><span class="ba-showcase-name">SaaS Partner — Sales Playbook Deck</span></div>
+        <span class="ba-showcase-type">Sales Deck</span>
+      </div>
+      <div class="ba-slides-row">
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label">Before</div>
+          <div class="ba-slide-before">
+            <div class="ba-slide-content">
+              <div class="ba-mock-window"><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div><div class="ba-mock-dot"></div></div>
+              <div class="ba-big-title" style="color:#aaa;">Features &amp; Benefits</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+                <div style="display:flex;align-items:center;gap:5px;"><div style="width:5px;height:5px;border-radius:50%;background:#ccc;flex-shrink:0;"></div><div style="height:5px;width:68%;background:rgba(0,0,0,0.07);border-radius:2px;"></div></div>
+                <div style="display:flex;align-items:center;gap:5px;"><div style="width:5px;height:5px;border-radius:50%;background:#ccc;flex-shrink:0;"></div><div style="height:5px;width:82%;background:rgba(0,0,0,0.07);border-radius:2px;"></div></div>
+                <div style="display:flex;align-items:center;gap:5px;"><div style="width:5px;height:5px;border-radius:50%;background:#ccc;flex-shrink:0;"></div><div style="height:5px;width:58%;background:rgba(0,0,0,0.07);border-radius:2px;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-arrow-col"><div class="ba-arrow-vert"></div><div class="ba-arrow-btn">→</div><div class="ba-arrow-vert"></div><div class="ba-arrow-brand">SlideWhizz</div></div>
+        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+          <div class="ba-slide-label after">After</div>
+          <div class="ba-slide-after" style="background:linear-gradient(140deg,#1a0d2e,#2d1848);">
+            <div class="ba-slide-content">
+              <div class="ba-slide-topbar" style="background:#b07ae8;"></div>
+              <div class="ba-slide-pill" style="background:rgba(176,122,232,0.18);color:#b07ae8;">Sales Playbook 2025</div>
+              <div class="ba-big-title" style="color:#b07ae8;font-size:clamp(16px,2vw,22px);">47% Faster<br>Close Rate.</div>
+              <div class="ba-metrics-row"><div class="ba-metric"><div class="ba-metric-n" style="color:#b07ae8;">47%</div><div class="ba-metric-l">Faster Close</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#b07ae8;">3x</div><div class="ba-metric-l">Pipeline</div></div><div class="ba-metric"><div class="ba-metric-n" style="color:#b07ae8;">Q1</div><div class="ba-metric-l">Results</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-outcome"><div class="ba-outcome-dot"></div>Win rate improved 47% in the first quarter after the redesign</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section darker" id="services">
+  <div class="sec-eyebrow ew-d reveal">What We Do</div>
+  <h2 class="sec-h xl on-dark reveal">Design That<br><em>Moves People.</em></h2>
+  <div class="svc-grid">
+    <div class="svc-card reveal"><div class="svc-num">01</div><div class="svc-title">Pitch Deck Design</div><p class="svc-desc">Investor-ready decks built on proven narrative frameworks. We've helped clients raise millions.</p><div class="svc-price">From $299</div></div>
+    <div class="svc-card reveal"><div class="svc-num">02</div><div class="svc-title">Corporate Presentations</div><p class="svc-desc">Board decks, quarterly reviews — polished to brand standards for executive audiences.</p><div class="svc-price">From $399</div></div>
+    <div class="svc-card reveal"><div class="svc-num">03</div><div class="svc-title">Sales Decks</div><p class="svc-desc">High-converting presentations built on buyer psychology. Designed to handle objections.</p><div class="svc-price">From $349</div></div>
+    <div class="svc-card reveal"><div class="svc-num">04</div><div class="svc-title">Training &amp; E-Learning</div><p class="svc-desc">Modular, engaging slides built for knowledge retention and learner engagement.</p><div class="svc-price">From $299</div></div>
+    <div class="svc-card reveal"><div class="svc-num">05</div><div class="svc-title">Conference Keynotes</div><p class="svc-desc">Stage-ready decks with full-bleed visuals and speaker-flow built in. Command any room.</p><div class="svc-price">From $599</div></div>
+    <div class="svc-card reveal"><div class="svc-num">06</div><div class="svc-title">Redesign &amp; Refresh</div><p class="svc-desc">Same content, dramatically elevated design. Fast turnaround, striking results.</p><div class="svc-price">From $199</div></div>
+  </div>
+  <div style="text-align:center;margin-top:36px;"><button class="btn-rose reveal" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Custom Quote →</button></div>
+</section>
+
+<!-- OUR WORK / PORTFOLIO -->
+<section class="section dark" id="work">
+  <div class="sec-eyebrow ew-d reveal">Portfolio</div>
+  <h2 class="sec-h xl on-dark reveal">Work That<br><em>Speaks for Itself.</em></h2>
+  <div class="pf-filter reveal">
+    <button class="pf-btn active" onclick="fPF(this,'all')">All</button>
+    <button class="pf-btn" onclick="fPF(this,'pitch')">Pitch Decks</button>
+    <button class="pf-btn" onclick="fPF(this,'corporate')">Corporate</button>
+    <button class="pf-btn" onclick="fPF(this,'sales')">Sales</button>
+    <button class="pf-btn" onclick="fPF(this,'training')">Training</button>
+  </div>
+  <div class="pf-grid">
+    <div class="pf-card wide reveal" data-type="pitch">
+      <div class="pf-thumb h220 pt1"><div class="pf-mock"><div class="pf-mock-t">Series A — TechVenture</div><div class="pf-mock-l m"></div><div class="pf-mock-l s"></div><div class="pf-mock-a" style="background:var(--rose);"></div></div></div>
+      <div class="pf-info"><div class="pf-row"><span class="pf-name">TechVenture Pitch Deck</span><span class="pf-type">Pitch Deck</span></div><div class="pf-detail">32 slides · Seed to Series A</div><div class="pf-result">↑ Raised $4.2M</div></div>
+    </div>
+    <div class="pf-card reveal" data-type="corporate">
+      <div class="pf-thumb h175 pt2"><div class="pf-mock"><div class="pf-mock-t">GlobalCorp Board Q3</div><div class="pf-mock-l m"></div><div class="pf-mock-l s"></div><div class="pf-mock-a" style="background:#4a7ab5;"></div></div></div>
+      <div class="pf-info"><div class="pf-row"><span class="pf-name">GlobalCorp Board Review</span><span class="pf-type">Corporate</span></div><div class="pf-detail">24 slides · Executive Audience</div><div class="pf-result">↑ $2M budget approved</div></div>
+    </div>
+    <div class="pf-card reveal" data-type="sales">
+      <div class="pf-thumb h175 pt3"><div class="pf-mock"><div class="pf-mock-t">Sales Playbook 2025</div><div class="pf-mock-l m"></div><div class="pf-mock-l s"></div><div class="pf-mock-a" style="background:#2DC8A8;"></div></div></div>
+      <div class="pf-info"><div class="pf-row"><span class="pf-name">SaaS Sales Playbook</span><span class="pf-type">Sales</span></div><div class="pf-detail">18 slides · SDR Team</div><div class="pf-result">↑ 47% faster close rate</div></div>
+    </div>
+    <div class="pf-card reveal" data-type="training">
+      <div class="pf-thumb h175 pt4"><div class="pf-mock"><div class="pf-mock-t">Leadership Program</div><div class="pf-mock-l m"></div><div class="pf-mock-l s"></div><div class="pf-mock-a" style="background:#b07ae8;"></div></div></div>
+      <div class="pf-info"><div class="pf-row"><span class="pf-name">Leadership Dev. Training</span><span class="pf-type">Training</span></div><div class="pf-detail">40 slides · Multi-module</div><div class="pf-result">↑ 92% learner satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section light" id="testi">
+  <div class="sec-eyebrow ew-r reveal">Client Love</div>
+  <h2 class="sec-h xl on-light reveal">What They<br><em>Say About Us.</em></h2>
+  <div class="tg">
+    <div class="tc feat reveal">
+      <div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div>
+      <p class="tc-q">"Jeneson and his team at SlideWhizz have been invaluable presentation partners. Remarkably quick response time with materials at exceptional quality."</p>
+      <div class="tc-auth"><div class="tc-av">HB</div><div><div class="tc-name">Hannah Berson</div><div class="tc-role">Founder &amp; CEO, SALT Collaboratory LLC</div></div></div>
+    </div>
+    <div class="tc reveal">
+      <div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div>
+      <p class="tc-q">"The 48-hour turnaround is real — not marketing. Quality is better than agencies charging 5x the price. Made SlideWhizz our permanent partner."</p>
+      <div class="tc-auth"><div class="tc-av">SR</div><div><div class="tc-name">Sarah Reynolds</div><div class="tc-role">Head of Marketing, Apex Corp</div></div></div>
+    </div>
+    <div class="tc reveal">
+      <div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div>
+      <p class="tc-q">"Our win rate improved noticeably within the first quarter of upgrading our deck quality. The ROI from using SlideWhizz is obvious."</p>
+      <div class="tc-auth"><div class="tc-av">AK</div><div><div class="tc-name">Arjun Kapoor</div><div class="tc-role">Consultant, Strategy &amp; Growth</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section dark" id="about">
+  <div class="about-split">
+    <div>
+      <div class="sec-eyebrow ew-d reveal">Who We Are</div>
+      <h2 class="sec-h lg on-dark reveal">Built by Designers<br>Who <em>Get Business.</em></h2>
+      <p class="sec-body on-dark reveal">SlideWhizz is a boutique presentation design studio founded in 2022. We work with founders, consultants, and enterprise teams who need their ideas to land — every single time.</p>
+      <div class="av-grid">
+        <div class="av-card reveal"><div class="av-icon">🎯</div><div class="av-title">Strategically Designed</div><div class="av-desc">Every deck is built around a narrative that moves your audience to act.</div></div>
+        <div class="av-card reveal"><div class="av-icon">⚡</div><div class="av-title">48-Hour Delivery</div><div class="av-desc">Deadlines are real. Our turnaround is the fastest in the industry.</div></div>
+        <div class="av-card reveal"><div class="av-icon">🔒</div><div class="av-title">100% Confidential</div><div class="av-desc">Your strategy, your ideas — always protected. NDA on request.</div></div>
+        <div class="av-card reveal"><div class="av-icon">♾️</div><div class="av-title">Unlimited Revisions</div><div class="av-desc">We iterate until you love it. No nickel-and-diming on changes.</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-eyebrow ew-d reveal">Our Team</div>
+      <div class="team-grid">
+        <div class="team-card reveal"><div class="team-av">J</div><div class="team-name">Jeneson</div><div class="team-role">Founder &amp; Lead Designer</div><div class="team-desc">15+ years in PowerPoint design. Microsoft Certified. Ex-Chillibreeze.</div></div>
+        <div class="team-card reveal"><div class="team-av">R</div><div class="team-name">Ritu</div><div class="team-role">Senior Designer</div><div class="team-desc">Brand specialist with expertise in corporate decks and data visualization.</div></div>
+        <div class="team-card reveal"><div class="team-av">S</div><div class="team-name">Sam</div><div class="team-role">Narrative Strategist</div><div class="team-desc">Former consultant turned deck storyteller. Makes complex ideas simple.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section darker" id="pricing">
+  <div style="text-align:center;max-width:640px;margin:0 auto 8px;">
+    <div class="sec-eyebrow ew-d reveal" style="justify-content:center;">Pricing</div>
+    <h2 class="sec-h xl on-dark reveal">Simple,<br><em>Honest Pricing.</em></h2>
+    <p class="sec-body on-dark reveal" style="margin:14px auto 0;text-align:center;">No hidden fees. No scope creep surprises. Just great decks at fair prices.</p>
+  </div>
+  <div class="pg">
+    <div class="pc reveal">
+      <div class="pc-tier">Starter</div>
+      <div class="pc-amt"><sup>$</sup>199</div>
+      <div class="pc-note">per project · up to 15 slides</div>
+      <ul class="pc-feats">
+        <li class="on">Up to 15 slides</li>
+        <li class="on">48-hour delivery</li>
+        <li class="on">2 revision rounds</li>
+        <li class="on">PowerPoint source file</li>
+        <li>Priority support</li>
+        <li>Custom illustrations</li>
+      </ul>
+      <button class="btn-pc out" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+    </div>
+    <div class="pc feat reveal">
+      <div class="pc-badge">Most Popular</div>
+      <div class="pc-tier">Professional</div>
+      <div class="pc-amt"><sup>$</sup>399</div>
+      <div class="pc-note">per project · up to 30 slides</div>
+      <ul class="pc-feats">
+        <li class="on">Up to 30 slides</li>
+        <li class="on">48-hour delivery</li>
+        <li class="on">Unlimited revisions</li>
+        <li class="on">PowerPoint + PDF</li>
+        <li class="on">Priority support</li>
+        <li>Custom illustrations</li>
+      </ul>
+      <button class="btn-pc sol" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start Project →</button>
+    </div>
+    <div class="pc reveal">
+      <div class="pc-tier">Enterprise</div>
+      <div class="pc-amt"><sup>$</sup>799</div>
+      <div class="pc-note">per project · unlimited slides</div>
+      <ul class="pc-feats">
+        <li class="on">Unlimited slides</li>
+        <li class="on">24-hour rush option</li>
+        <li class="on">Unlimited revisions</li>
+        <li class="on">All file formats</li>
+        <li class="on">Priority support</li>
+        <li class="on">Custom illustrations</li>
+      </ul>
+      <button class="btn-pc out" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+    <div class="sec-eyebrow ew-d reveal" style="justify-content:center;margin-bottom:28px;">FAQ</div>
+    <div class="fi">
+      <div class="fq" onclick="tF(this)">How does the 48-hour turnaround work?<span class="fi-icon">+</span></div>
+      <div class="fa">Once you submit your brief and content, we start immediately. Most projects are delivered within 48 hours. Rush 24-hour delivery is available on Enterprise plans.</div>
+    </div>
+    <div class="fi">
+      <div class="fq" onclick="tF(this)">What do you need from me to get started?<span class="fi-icon">+</span></div>
+      <div class="fa">A brief outline of your content, any existing brand guidelines, and your goals for the presentation. We handle the rest — structure, design, and flow.</div>
+    </div>
+    <div class="fi">
+      <div class="fq" onclick="tF(this)">Do you offer ongoing retainer packages?<span class="fi-icon">+</span></div>
+      <div class="fa">Yes — our retainer clients get discounted per-deck rates, priority scheduling, and a dedicated account manager. Contact us to discuss a custom plan.</div>
+    </div>
+    <div class="fi">
+      <div class="fq" onclick="tF(this)">What file formats do you deliver?<span class="fi-icon">+</span></div>
+      <div class="fa">We deliver fully editable PowerPoint files by default. PDF, Google Slides, and Keynote formats are available on Professional and Enterprise plans.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section dark" id="contact">
+  <div class="sec-eyebrow ew-d reveal">Get In Touch</div>
+  <h2 class="sec-h xl on-dark reveal">Let's Build<br><em>Something Great.</em></h2>
+  <div class="contact-grid">
+    <form class="cf" id="sw-contact-form" onsubmit="return false;">
+      <div class="frow">
+        <div class="fg"><label class="fl">First Name</label><input class="fi-i" id="sw-first-name" type="text" placeholder="Jeneson"></div>
+        <div class="fg"><label class="fl">Last Name</label><input class="fi-i" id="sw-last-name" type="text" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input class="fi-i" id="sw-email" type="email" placeholder="you@company.com"></div>
+      <div class="fg"><label class="fl">Project Type</label>
+        <select class="fi-s" id="sw-project-type">
+          <option value="">Select a service...</option>
+          <option>Pitch Deck</option>
+          <option>Corporate Presentation</option>
+          <option>Sales Deck</option>
+          <option>Training / E-Learning</option>
+          <option>Conference Keynote</option>
+          <option>Redesign / Refresh</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Tell Us About Your Project</label><textarea class="fi-t" id="sw-message" placeholder="Deadline, slide count, key goals..."></textarea></div>
+      <button class="btn-rose" type="submit" id="sw-submit-btn" style="align-self:flex-start;" onclick="swSubmitForm(event)">Send Message →</button>
+    </form>
+    <div class="ci-list">
+      <div class="ci"><div class="ci-icon">📧</div><div><div class="ci-title">Email Us</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5ddd0d9d9daf5c6d9dcd1d0c2dddccfcf9bd6dad8">[email&#160;protected]</a><br>Reply within 4 business hours</div></div></div>
+      <div class="ci"><div class="ci-icon">⚡</div><div><div class="ci-title">48-Hour Turnaround</div><div class="ci-val">Submit today, receive your deck within 48 hours. Rush delivery available.</div></div></div>
+      <div class="ci"><div class="ci-icon">🌍</div><div><div class="ci-title">Global Clients</div><div class="ci-val">We work with clients across North America, Europe, Asia &amp; beyond.</div></div></div>
+      <div class="ci"><div class="ci-icon">🔒</div><div><div class="ci-title">Confidential by Default</div><div class="ci-val">Your content and strategy stays private. NDA available on request.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner rose">
+  <h2 class="cta-h on-rose">Your Next Deck<br><em>Should Win Something.</em></h2>
+  <p class="cta-p">Join 500+ clients who trust SlideWhizz to make their ideas impossible to ignore.</p>
+  <div class="cta-btns">
+    <button class="btn-white on-rose" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Free Quote →</button>
+    <button class="btn-outline" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See Our Work</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div><div class="f-logo">Slide<em>Whizz</em></div><p class="f-desc">Premium presentation design for teams who can't afford to show up with mediocre slides.</p></div>
+    <div class="f-col"><h5>Services</h5><ul><li><a href="#services">Pitch Decks</a></li><li><a href="#services">Corporate</a></li><li><a href="#services">Sales Decks</a></li><li><a href="#services">Redesign</a></li></ul></div>
+    <div class="f-col"><h5>Company</h5><ul><li><a href="#about">About Us</a></li><li><a href="#work">Our Work</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="f-col"><h5>Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#a0c8c5cccccfe0d3ccc9c4c5d7c8c9dada8ec3cfcd"><span class="__cf_email__" data-cfemail="523a373e3e3d12213e3b3637253a3b28287c313d3f">[email&#160;protected]</span></a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="f-bottom"><p>© 2025 SlideWhizz. All rights reserved.</p><div class="f-pill">48hr Delivery Guaranteed</div></div>
+</footer>
+
+<script>
+// FAQ TOGGLE
+function tF(el){
+  var i=el.parentElement;
+  var w=i.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open');});
+  if(!w)i.classList.add('open');
+}
+
+// PORTFOLIO FILTER
+function fPF(btn,type){
+  document.querySelectorAll('.pf-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.pf-card').forEach(function(c){
+    c.style.display=(type==='all'||c.dataset.type===type)?'':'none';
+  });
+}
+
+// HERO CARD MOUSE TILT (desktop only — no cursor change)
+var mainDeck=document.getElementById('mainDeck');
+var heroRight=document.querySelector('.hero-right');
+if(heroRight&&mainDeck){
+  heroRight.addEventListener('mousemove',function(e){
+    var r=heroRight.getBoundingClientRect();
+    var x=((e.clientX-r.left)/r.width-0.5)*18;
+    var y=((e.clientY-r.top)/r.height-0.5)*-13;
+    mainDeck.style.transform='translate(-50%,-50%) rotateX('+(10+y)+'deg) rotateY('+(-14+x)+'deg)';
+  });
+  heroRight.addEventListener('mouseleave',function(){
+    mainDeck.style.transform='';
+  });
+}
+
+// SERVICE CARD TILT
+document.querySelectorAll('.svc-card').forEach(function(c){
+  c.addEventListener('mousemove',function(e){
+    var r=c.getBoundingClientRect();
+    var x=((e.clientX-r.left)/r.width-0.5)*10;
+    var y=((e.clientY-r.top)/r.height-0.5)*-8;
+    c.style.transform='perspective(900px) rotateX('+y+'deg) rotateY('+x+'deg) translateY(-8px) translateZ(10px)';
+  });
+  c.addEventListener('mouseleave',function(){c.style.transform='';});
+});
+
+
+
+// ── VELO INTEGRATION ────────────────────────────────────────────────────────
+
+// 1. Auto-resize: tell Wix how tall this page is so iFrame fits perfectly
+function swSendHeight() {
+  window.parent.postMessage({ type: 'sw:height', height: document.body.scrollHeight }, '*');
+}
+window.addEventListener('load', swSendHeight);
+window.addEventListener('resize', swSendHeight);
+
+// 2. Form submit: validate then postMessage to Velo
+function swSubmitForm(e) {
+  e.preventDefault();
+  var btn = document.getElementById('sw-submit-btn');
+  var firstName = (document.getElementById('sw-first-name').value || '').trim();
+  var lastName  = (document.getElementById('sw-last-name').value  || '').trim();
+  var email     = (document.getElementById('sw-email').value      || '').trim();
+  var projType  = document.getElementById('sw-project-type').value;
+  var message   = (document.getElementById('sw-message').value    || '').trim();
+
+  // Basic validation
+  if (!firstName || !email || !projType) {
+    alert('Please fill in First Name, Email, and Project Type.');
+    return;
+  }
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailOk) { alert('Please enter a valid email address.'); return; }
+
+  // Disable button while sending
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  // Fire to Velo (and any parent listener)
+  window.parent.postMessage({
+    type: 'sw:formSubmit',
+    payload: {
+      firstName : firstName,
+      lastName  : lastName,
+      email     : email,
+      projectType: projType,
+      message   : message,
+      submittedAt: new Date().toISOString()
+    }
+  }, '*');
+
+  // Listen for Velo's ack
+  window.addEventListener('message', function handler(ev) {
+    if (ev.data && ev.data.type === 'sw:formAck') {
+      window.removeEventListener('message', handler);
+      if (ev.data.success) {
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = '#1a7a4a';
+        document.getElementById('sw-contact-form').reset();
+        setTimeout(function() {
+          btn.textContent = 'Send Message →';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    }
+  });
+}
+
+// 3. Scroll-to-section: let Wix trigger scrolling via postMessage
+window.addEventListener('message', function(ev) {
+  if (ev.data && ev.data.type === 'sw:scrollTo') {
+    var el = document.getElementById(ev.data.sectionId);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// ── END VELO INTEGRATION ─────────────────────────────────────────────────────
+  sections.forEach(function(s){
+    if(pos>=s.offsetTop&&pos<s.offsetTop+s.offsetHeight){
+      document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+      var a=document.querySelector('.nav-links a[href="#'+s.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
